@@ -10,12 +10,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'tomasiser/vim-code-dark'
-Plugin 'nightsense/stellarized'
-
-Plugin 'airblade/vim-gitgutter'
 Plugin 'ngmy/vim-rubocop'
-Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-endwise'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'vim-ruby/vim-ruby'
@@ -37,8 +32,10 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+syntax on
 
 colorscheme dracula
+
 
 set tabstop=2       "spaces per tab when reading file
 set softtabstop=2   "spaces per tab when editing file
@@ -53,21 +50,22 @@ set wildmenu        "visual autocompletion
 set incsearch       "search as typing
 set hlsearch        "highlight matches
 
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-"nnoremap <C-L> <C-W><C-L>
-"nnoremap <C-H> <C-W><C-H>
 nnoremap <S-H> <C-W><C-H>
 nnoremap <S-L> <C-W><C-L>
+nnoremap <S-J> <C-W><C-J>
+nnoremap <S-K> <C-W><C-K>
 
 autocmd FileType ruby set shiftwidth=2 " indent for ruby
 autocmd vimenter * NERDTree            " opens nerd tree on vim start
 " quits vim if nerd tree is the only pane left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" backspace fix
+set backspace=indent,eol,start
+
 set path+=**
 
 set backupdir=~/.vim/backup
 set directory=~/.vim/directory
 
-syntax on
+set regexpengine=1

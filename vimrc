@@ -17,6 +17,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'mileszs/ack.vim'
 Plugin 'dracula/vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -59,6 +60,8 @@ autocmd FileType ruby set shiftwidth=2 " indent for ruby
 autocmd vimenter * NERDTree            " opens nerd tree on vim start
 " quits vim if nerd tree is the only pane left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" sets ruby syntax for .eye files
+autocmd BufNewFile,BufRead *.eye set syntax=ruby
 
 " backspace fix
 set backspace=indent,eol,start
@@ -67,5 +70,7 @@ set path+=**
 
 set backupdir=~/.vim/backup
 set directory=~/.vim/directory
+set wildignore+=*/node_modules/*
+set clipboard=unnamed
 
 set regexpengine=1
